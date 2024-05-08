@@ -6,7 +6,7 @@ bt_action_server:
     ros_plugins_timeout: 1000  # Optional (defaults 1000 ms)
 
     plugins:
-      - behaviortree_cpp/bt_plugins
+      # - behaviortree_cpp/bt_plugins
       - btcpp_ros2_samples/bt_plugins
 
     behavior_trees:

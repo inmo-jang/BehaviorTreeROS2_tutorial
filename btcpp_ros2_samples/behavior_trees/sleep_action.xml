@@ -1,14 +1,14 @@
 <root BTCPP_format="4">
   <BehaviorTree ID="SleepActionSample">
     <Sequence>
-      <SaySomething message="start"/>
+      <!-- <SaySomething message="start"/> -->
       <SleepAction name="sleepA" action_name="sleep_service" msec="2000"/>
-      <SaySomething message="sleep completed"/>
+      <!-- <SaySomething message="sleep completed"/> -->
       <Fallback>
         <Timeout msec="1500">
           <SleepAction name="sleepB" action_name="sleep_service" msec="2000"/>
         </Timeout>
-        <SaySomething message="sleep aborted"/>
+        <!-- <SaySomething message="sleep aborted"/> -->
       </Fallback>
     </Sequence>
   </BehaviorTree>

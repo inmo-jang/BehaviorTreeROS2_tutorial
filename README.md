@@ -1,38 +1,33 @@
-# BehaviorTree.ROS2
-[![Test](https://github.com/BehaviorTree/BehaviorTree.ROS2/actions/workflows/test.yml/badge.svg)](https://github.com/BehaviorTree/BehaviorTree.ROS2/actions/workflows/test.yml)
+# BehaviorTreeROS2_tutorial
 
-This repository contains useful wrappers to use ROS2 and BehaviorTree.CPP together.
+This repository serves as an additional tutorial for BehaviorTree.ROS2.
 
-In particular, it provides a standard way to implement:
+## How to use this tutorial
 
-- Behavior Tree Executor with ROS Action interface.
-- Action clients.
-- Service Clients.
-- Topic Subscribers.
-- Topic Publishers.
+### (1) Sleep Action (Original Example)
 
-Our main goals are:
-
-- to minimize the amount of boilerplate.
-- to make asynchronous Actions non-blocking.
-
-# Documentation
-
-- [ROS Behavior Wrappers](behaviortree_ros2/ros_behavior_wrappers.md)
-- [TreeExecutionServer](behaviortree_ros2/tree_execution_server.md)
-- [Sample Behaviors](btcpp_ros2_samples/README.md)
-
-Note that this library is compatible **only** with:
-
-- **BT.CPP** 4.6 or newer.
-- **ROS2** Humble or newer.
-
-Additionally, check **plugins.hpp** to see how to learn how to
-wrap your Nodes into plugins that can be loaded at run-time.
+This is one of the original test examples from the official repository, available at [BehaviorTree/BehaviorTree.ROS2](https://github.com/BehaviorTree/BehaviorTree.ROS2). It appears that some files were missing in the original example, so I have modified it to ensure we can successfully run at least one of them, named "SleepActionSample".
 
 
-## Acknowledgements
 
-A lot of code is either inspired or copied from [Nav2](https://navigation.ros.org/).
+```
+git clone <repository-url>
+colcon build
+source install/local_setup.bash
 
-For this reason, we retain the same license and copyright.
+ros2 launch btcpp_ros2_samples sample_bt_executor.launch.xml
+```
+
+
+
+
+In another terminal, but within the same file path, execute:
+
+```
+source install/local_setup.bash
+ros2 action send_goal /behavior_server btcpp_ros2_interfaces/action/ExecuteTree "{ target_tree: SleepActionSample }"
+```
+
+
+For more information, please refer to the [BehaviorTree.ROS2](https://github.com/BehaviorTree/BehaviorTree.ROS2).
+
