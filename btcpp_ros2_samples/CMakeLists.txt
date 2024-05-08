@@ -8,10 +8,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(ament_cmake REQUIRED)
 find_package(behaviortree_ros2 REQUIRED)
 find_package(btcpp_ros2_interfaces REQUIRED)
+find_package(turtlesim REQUIRED) # For turtlesim::action::RotateAbsolute interface
 find_package(std_msgs REQUIRED)
 
 set(THIS_PACKAGE_DEPS
     behaviortree_ros2
+    turtlesim
     std_msgs
     btcpp_ros2_interfaces )
 
@@ -41,6 +43,14 @@ target_link_libraries(sleep_client_dyn sleep_plugin )
 ament_target_dependencies(sleep_client_dyn ${THIS_PACKAGE_DEPS})
 
 ######################################################
+# Build a client that call the turtlesim rotate action (Plugin version)
+
+add_library(turtlesim_plugin SHARED src/rotate_turtle.cpp)
+target_compile_definitions(turtlesim_plugin PRIVATE  BT_PLUGIN_EXPORT )
+ament_target_dependencies(turtlesim_plugin ${THIS_PACKAGE_DEPS})
+
+
+######################################################
 # Build Server
 add_executable(sleep_server src/sleep_server.cpp)
 ament_target_dependencies(sleep_server ${THIS_PACKAGE_DEPS})
@@ -58,6 +68,7 @@ install(TARGETS
   sleep_client_dyn
   sleep_server
   sleep_plugin
+  turtlesim_plugin
   subscriber_test
   sample_bt_executor
   DESTINATION lib/${PROJECT_NAME}
@@ -68,6 +79,7 @@ install(TARGETS
 
 install(TARGETS
   sleep_plugin
+  turtlesim_plugin
   LIBRARY DESTINATION share/${PROJECT_NAME}/bt_plugins
   ARCHIVE DESTINATION share/${PROJECT_NAME}/bt_plugins
   RUNTIME DESTINATION share/${PROJECT_NAME}/bt_plugins

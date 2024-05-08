@@ -29,5 +29,17 @@ ros2 action send_goal /behavior_server btcpp_ros2_interfaces/action/ExecuteTree 
 ```
 
 
+### (2) Rotate Turtlesim 
+
+This example shows how we can add a new interface with BT and ROS2. 
+
+
+In another terminal, but within the same file path, execute:
+```
+source install/local_setup.bash
+ros2 action send_goal /behavior_server btcpp_ros2_interfaces/action/ExecuteTree "{ target_tree: RotateTurtle }"
+```
+
+
 For more information, please refer to the [BehaviorTree.ROS2](https://github.com/BehaviorTree/BehaviorTree.ROS2).
 

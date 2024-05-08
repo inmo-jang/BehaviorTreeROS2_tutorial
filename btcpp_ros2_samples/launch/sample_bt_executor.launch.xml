@@ -7,5 +7,6 @@
 
   <group if="$(var sleep_server)">
     <node pkg="btcpp_ros2_samples" exec="sleep_server" output="screen"/>
+    <node pkg="turtlesim" exec="turtlesim_node" output="screen"/>
   </group>
 </launch>

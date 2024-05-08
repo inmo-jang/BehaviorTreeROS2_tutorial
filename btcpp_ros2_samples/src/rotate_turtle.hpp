@@ -1,19 +1,19 @@
 #include "behaviortree_ros2/bt_action_node.hpp"
-#include "btcpp_ros2_interfaces/action/sleep.hpp"
+#include "turtlesim/action/rotate_absolute.hpp"
 
 using namespace BT;
 
-class SleepAction : public RosActionNode<btcpp_ros2_interfaces::action::Sleep>
+class RotateAbsoluteAction : public RosActionNode<turtlesim::action::RotateAbsolute>
 {
 public:
-  SleepAction(const std::string& name, const NodeConfig& conf,
+  RotateAbsoluteAction(const std::string& name, const NodeConfig& conf,
               const RosNodeParams& params)
-    : RosActionNode<btcpp_ros2_interfaces::action::Sleep>(name, conf, params)
+    : RosActionNode<turtlesim::action::RotateAbsolute>(name, conf, params)
   {}
 
   static BT::PortsList providedPorts()
   {
-    return providedBasicPorts({ InputPort<unsigned>("msec") });
+    return providedBasicPorts({ InputPort<unsigned>("theta") });
   }
 
   bool setGoal(Goal& goal) override;

@@ -1,0 +1,9 @@
+<root BTCPP_format="4">
+  <BehaviorTree ID="RotateTurtle">
+    <Sequence>
+      <RotateAbsoluteAction name="rotateA" action_name="/turtle1/rotate_absolute" theta="6.00"/>
+      <RotateAbsoluteAction name="rotateB" action_name="/turtle1/rotate_absolute" theta="0"/>
+      <RotateAbsoluteAction name="rotateC" action_name="/turtle1/rotate_absolute" theta="3.14"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
